@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Little Adventure 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;500;600;700;800&display=swap');
+:root{--ink:#182033;--red:#ef4652;--pink:#ff8fb0;--cream:#fffaf3;--blue:#77cdf7;--gold:#ffd166}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#11182a;color:var(--ink);font-family:Poppins,system-ui,sans-serif}
+.screen{min-height:100vh;padding:30px 16px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.panel{width:min(1050px,96vw);background:rgba(255,250,243,.98);border:4px solid var(--ink);border-radius:30px;box-shadow:0 10px 0 var(--ink);padding:38px;position:relative;z-index:3}
+.center{text-align:center}.pixel{font-family:"Press Start 2P",monospace;font-size:11px;line-height:1.8}
+h1,h2,h3{margin:.25em 0 .5em;line-height:1.1}h1{font-size:clamp(40px,7vw,76px)}h2{font-size:clamp(30px,5vw,54px)}h3{font-size:23px}
+p{font-size:18px;line-height:1.7}.pink{color:var(--red)}
+.btn{display:inline-block;background:var(--red);color:#fff;border:3px solid var(--ink);border-radius:999px;padding:14px 23px;font-weight:800;box-shadow:0 5px 0 var(--ink);margin:7px;transition:.15s}.btn:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--ink)}.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--ink)}.btn.alt{background:#fff;color:var(--ink)}.btn.gold{background:var(--gold);color:var(--ink)}
+.hero{background:linear-gradient(#75cef9,#e2f8ff 57%,#ffdce9)}
+.couple{height:520px;max-width:920px;margin:0 auto;position:relative;display:flex;align-items:flex-end;justify-content:center;gap:0}
+.person{position:relative;height:500px;width:43%;display:flex;align-items:flex-end;justify-content:center;z-index:2}
+.person img{height:500px;max-width:100%;object-fit:contain;border-radius:18px;filter:drop-shadow(0 8px 3px rgba(24,32,51,.18))}
+.person.left{transform:translateX(75px)}.person.right{transform:translateX(-75px)}
+.person.right img{transform:scale(.92)}
+.heartcloud{position:absolute;inset:0;pointer-events:none;z-index:4}.heart{position:absolute;font-size:30px;animation:pulse 1.45s infinite}.a{left:19%;top:19%}.b{left:31%;top:6%;font-size:43px}.c{right:19%;top:19%}.d{right:30%;top:5%;font-size:44px}.e{left:43%;top:27%;font-size:38px}.f{right:41%;top:39%;font-size:30px}.g{left:8%;top:44%;font-size:23px}.h{right:7%;top:45%;font-size:25px}
+@keyframes pulse{50%{transform:scale(1.18) rotate(4deg)}}
+.name{position:absolute;bottom:2px;background:#fff;border:3px solid var(--ink);border-radius:15px;padding:7px 14px;font-weight:800;z-index:5}
+.story{background:linear-gradient(#fff9f2,#ffe3ee)}.storybox{max-width:850px;margin:auto}.quote{font-size:22px;font-weight:600;padding:22px 25px;border-left:6px solid var(--red);background:#fff;border-radius:15px;margin:25px 0}
+.quiz{background:linear-gradient(#a4e4ff 0 60%,#a7dc84 61%)}.quizwrap{max-width:850px;margin:auto}
+.question{display:none;border:3px solid var(--ink);border-radius:20px;background:#fff;padding:25px;text-align:left}.question.active{display:block}.qnumber{font-family:"Press Start 2P";font-size:11px}.qtitle{font-weight:800;font-size:23px;margin:10px 0}.answers{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:17px}
+.answer{background:#f4f6fa;border:3px solid var(--ink);border-radius:14px;padding:14px;text-align:left;font-weight:600}.answer:hover{background:#ffe8ef}.answer.selected{background:#e0f7e6}
+.free textarea{width:100%;min-height:140px;border:3px solid var(--ink);border-radius:14px;padding:14px;font-size:16px;resize:vertical}
+.feedback{display:none;margin-top:20px;padding:18px;border-radius:16px;border:3px dashed var(--ink);background:#fff4bc;font-weight:600}.feedback.show{display:block}.progress{height:15px;background:#e2e6ee;border:2px solid var(--ink);border-radius:20px;overflow:hidden;margin:18px 0}.progress i{display:block;height:100%;width:0;background:var(--red);transition:.3s}
+.kisses{display:none;height:360px;border:4px solid var(--ink);border-radius:22px;background:linear-gradient(#ffe1ed,#fff);position:relative;overflow:hidden;margin:20px 0}.kiss{position:absolute;font-size:38px;bottom:-50px;animation:rise 4.2s linear forwards;cursor:pointer;user-select:none}@keyframes rise{to{transform:translateY(-450px) rotate(15deg);opacity:.2}}
+.dates{background:linear-gradient(#ffdce9,#fff8ef)}.dategrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:24px}.datecard{background:#fff;border:3px solid var(--ink);border-radius:20px;padding:21px;text-align:left;transition:.15s}.datecard:hover{transform:translateY(-4px);box-shadow:0 7px 0 var(--ink)}.datecard strong{font-size:21px}.datecard small{display:block;opacity:.65;margin-top:5px}.datecard .btn{width:100%;margin:15px 0 0}
+.final{background:radial-gradient(circle at 50% 16%,#fff 0 12%,transparent 13%),linear-gradient(#ffe0eb,#fff9f2)}.instruction{background:#fff3bd;border:3px dashed var(--ink);border-radius:20px;padding:24px;margin:22px 0}.heartbig{font-size:68px;animation:beat 1.1s infinite}@keyframes beat{50%{transform:scale(1.14)}}
+.formbox{background:#fff;border:3px solid var(--ink);border-radius:20px;padding:24px;text-align:left;margin-top:25px}label{display:block;font-weight:800;margin:14px 0 7px}textarea{width:100%;min-height:120px;border:3px solid var(--ink);border-radius:13px;padding:13px;background:#fff;font-size:16px;resize:vertical}.thanks{display:none}.hide{display:none!important}.tiny{font-size:13px;opacity:.7}
+.spark{position:absolute;font-size:28px;animation:sparkfloat 6s linear infinite;pointer-events:none;z-index:1}@keyframes sparkfloat{0%{transform:translateY(110vh) rotate(0);opacity:0}12%{opacity:1}100%{transform:translateY(-20vh) rotate(360deg);opacity:0}}
+@media(max-width:700px){.panel{padding:24px 16px}.couple{height:330px}.person{height:320px}.person img{height:320px}.person.left{transform:translateX(35px)}.person.right{transform:translateX(-35px)}.person.right img{transform:scale(.9)}.name{font-size:13px}.answers{grid-template-columns:1fr}p{font-size:16px}}
+</style>
+</head>
+<body>
+
+<section class="screen hero" id="home">
+<div class="panel center">
+<div class="pixel">A WILD DATE INVITATION APPEARED!</div>
+<h1>Hey, <span class="pink">Divyansh</span> 💗</h1>
+<p>There is a very special quest waiting for you.</p>
+<div class="couple">
+<div class="heartcloud">
+<span class="heart a">💗</span><span class="heart b">💕</span><span class="heart c">💗</span><span class="heart d">💞</span><span class="heart e">❤️</span><span class="heart f">💖</span><span class="heart g">💕</span><span class="heart h">❤️</span>
+</div>
+<div class="person left"><img src="divyansh.jpg" alt=""><div class="name">Divyansh</div></div>
+<div class="person right"><img src="ananya.jpg" alt=""><div class="name">Ananya</div></div>
+</div>
+<p><b>Two people. One little adventure. And a whole lot of love between them.</b></p>
+<button class="btn" onclick="go('story')">START OUR QUEST →</button>
+</div></section>
+
+<section class="screen story hide" id="story">
+<div class="panel"><div class="storybox">
+<div class="pixel">A LITTLE STORY ABOUT US</div>
+<h2>Somewhere along the way, <span class="pink">you became my person.</span></h2>
+<p>There are people who enter your life and become a part of it. And then there are people who slowly become woven into everything — the little jokes, the random conversations, the stupid arguments, the comfort after a bad day, the excitement over something tiny, and the moments where you don't even need to say anything because you just understand each other.</p>
+<p><b>That's what you are to me.</b></p>
+<p>If I could choose one person to stand beside me through every adventure, every ridiculous plan, every quiet evening, every chaotic morning, every laugh-until-we-can't-breathe moment and every memory we haven't made yet… I'd choose you.</p>
+<div class="quote">“I don't want a perfect love story. I want ours — the messy, funny, ridiculously affectionate, slightly crazy story where I get to keep choosing you again and again.” ❤️</div>
+<p>I love you in the obvious moments, of course. But I also love you in the ordinary ones. I love talking to you when there's absolutely nothing important to talk about. I love knowing that somewhere in my day, there will be a moment that makes me think of you. I love the comfort of you. I love the way you have become someone I can miss even after seeing you five minutes ago.</p>
+<p>And if life is one giant adventure, then honestly, I don't care how complicated the map gets. I just want you somewhere beside me.</p>
+<p>So, my favourite person, Ananya has prepared a tiny test. Not because you need to prove anything… but because I want to see just how well you know <b>us</b>. 😌💗</p>
+<div class="center"><button class="btn" onclick="go('quiz')">LET'S SEE IF YOU KNOW US →</button></div>
+</div></div></section>
+
+<section class="screen quiz hide" id="quiz">
+<div class="panel"><div class="quizwrap">
+<div class="pixel">RELATIONSHIP BATTLE • 4 QUESTIONS</div>
+<h2>How well do you know <span class="pink">us?</span></h2>
+<p>Answer each question. If you get even <b>one</b> wrong, Ananya has a very special lifeline waiting for you. 💋</p>
+<div class="progress"><i id="prog"></i></div>
+
+<div class="question active" id="q0">
+<div class="qnumber">QUESTION 1 / 4</div><div class="qtitle">Who's likely to say “I love you” first?</div>
+<div class="answers"><button class="answer" onclick="choose(0,0,this)">Divyansh</button><button class="answer" onclick="choose(0,1,this)">Ananya</button><button class="answer" onclick="choose(0,2,this)">Both of them at the same time</button><button class="answer" onclick="choose(0,3,this)">Neither — we're too stubborn</button></div>
+<div class="feedback" id="f0"></div><div class="center"><button class="btn hide" id="next0" onclick="nextQ(1)">NEXT QUESTION →</button></div></div>
+
+<div class="question" id="q1">
+<div class="qnumber">QUESTION 2 / 4</div><div class="qtitle">What restaurant did we go to on our first date? <span class="tiny">(You better remember this one 👀)</span></div>
+<div class="answers"><button class="answer" onclick="choose(1,0,this)">Bai Mu Dan</button><button class="answer" onclick="choose(1,1,this)">Ba Da Bom</button><button class="answer" onclick="choose(1,2,this)">Startbucks</button><button class="answer" onclick="choose(1,3,this)">Effingut</button></div>
+<div class="feedback" id="f1"></div><div class="center"><button class="btn hide" id="next1" onclick="nextQ(2)">NEXT QUESTION →</button></div></div>
+
+<div class="question" id="q2">
+<div class="qnumber">QUESTION 3 / 4</div><div class="qtitle">What do you like the most about our relationship?</div>
+<div class="free"><textarea id="free2" placeholder="There is no wrong answer here. Tell me what you really think... 💗"></textarea></div>
+<div class="feedback" id="f2"></div><div class="center"><button class="btn" id="next2" onclick="answerFree()">LOCK IN MY ANSWER →</button></div></div>
+
+<div class="question" id="q3">
+<div class="qnumber">QUESTION 4 / 4</div><div class="qtitle">What is my favourite colour?</div>
+<div class="answers"><button class="answer" onclick="choose(3,0,this)">Pink</button><button class="answer" onclick="choose(3,1,this)">Black</button><button class="answer" onclick="choose(3,2,this)">Purple</button><button class="answer" onclick="choose(3,3,this)">Blue</button><button class="answer" onclick="choose(3,4,this)">White</button></div>
+<div class="feedback" id="f3"></div><div class="center"><button class="btn hide" id="next3" onclick="finishQuiz()">FINISH THE QUIZ →</button></div></div>
+
+<div id="result" class="feedback"></div><div id="kisszone" class="kisses"></div>
+<div class="center"><button class="btn gold hide" id="startKiss" onclick="startKissGame()">I NEED ANANYA'S HELP 💋</button></div>
+<div class="center"><button class="btn hide" id="toDates" onclick="go('dates')">CONTINUE TO THE DATE →</button></div>
+</div></div></section>
+
+<section class="screen dates hide" id="dates">
+<div class="panel center"><div class="pixel">NEXT ADVENTURE • CHOOSE YOUR DAY</div>
+<h2>When should I take you out? 💗</h2>
+<p>Okay, quiz champion. Now you get to choose the day that works best for you.</p>
+<div class="dategrid">
+<div class="datecard"><strong>Friday, 11 September</strong><small>September 11, 2026</small><button class="btn" onclick="pickDate('Friday, 11 September 2026')">I CHOOSE THIS 💗</button></div>
+<div class="datecard"><strong>Saturday, 12 September</strong><small>September 12, 2026</small><button class="btn" onclick="pickDate('Saturday, 12 September 2026')">I CHOOSE THIS 💗</button></div>
+<div class="datecard"><strong>Sunday, 13 September</strong><small>September 13, 2026</small><button class="btn" onclick="pickDate('Sunday, 13 September 2026')">I CHOOSE THIS 💗</button></div>
+<div class="datecard"><strong>Saturday, 19 September</strong><small>September 19, 2026</small><button class="btn" onclick="pickDate('Saturday, 19 September 2026')">I CHOOSE THIS 💗</button></div>
+<div class="datecard"><strong>Sunday, 20 September</strong><small>September 20, 2026</small><button class="btn" onclick="pickDate('Sunday, 20 September 2026')">I CHOOSE THIS 💗</button></div>
+</div></div></section>
+
+<section class="screen final hide" id="final">
+<div class="panel center"><div class="heartbig">💗</div><div class="pixel">DATE QUEST ACCEPTED</div>
+<h2>Okay… <span class="pink">it's a date.</span> 🥹</h2><p>You chose:</p><h2 id="chosenDate" class="pink"></h2>
+<div class="instruction"><h3>💌 A LITTLE NOTE FOR MY DATE</h3>
+<p><b>Be ready by 11:00 AM — no later than that.</b> ⏰</p>
+<p>And please, please don't stress about your outfit. <b>I'll help you with it.</b> I'll tell you what we're matching in at least two days before the date, so you don't have to worry about figuring it all out yourself.</p>
+<p>Honestly, whatever you wear, you're going to look good anyway. You look good <b>even when you aren't ready</b>, even when you've just woken up, even when you're sleepy, when you've got low energy, or when you've put in absolutely no effort at all.</p>
+<p>So just be yourself. <b>That's the version of you I love the most.</b> ❤️</p></div>
+<p style="font-size:21px"><b>I'm so excited to take you out on a date.</b></p>
+<p>Thank you for being mine. I love you so much. ❤️</p>
+<p>I hope I don't fuck it up. 😭<br>And I hope this turns into one of the best dates we've ever been on.</p>
+
+<div class="formbox">
+<h3>💭 Before our date, tell me one more thing…</h3>
+<p><b>What do you think the date is going to be about?</b> It can be your most ridiculous guess, your most confident prediction, or absolutely no idea at all.</p>
+<label for="guess">Your guess 💭</label><textarea id="guess" name="What I think the date will be about" required placeholder="I think Ananya is going to take me to..."></textarea>
+<label for="want">Is there anything you'd want to do on the date?</label><p class="tiny">It can be the smallest thing — a food, a place, something silly, a song, something you've always wanted to try… anything.</p>
+<textarea id="want" name="Something I want to do on the date" placeholder="Even if it's something tiny, tell me..."></textarea>
+<label for="message">Anything you want me to keep in mind, or any message for me before the date?</label>
+<textarea id="message" name="My message to Ananya" placeholder="Anything at all. I'm listening. ❤️"></textarea>
+
+<form action="https://formsubmit.co/ananyapareek23@gmail.com" method="POST" id="responseForm">
+<input type="hidden" name="_subject" value="💗 Divyansh completed our date quest!">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://formsubmit.co/thank-you">
+<input type="hidden" name="Selected date" id="emailDate">
+<input type="hidden" name="Q1" id="emailQ1"><input type="hidden" name="Q2" id="emailQ2"><input type="hidden" name="Q3" id="emailQ3"><input type="hidden" name="Q4" id="emailQ4">
+<div class="center"><button class="btn" type="submit">SEND THIS TO ANANYA 💌</button></div>
+</form>
+<div class="thanks" id="thanks"><h3>Message sent. 💗</h3><p>Now the only thing left is to wait for our little adventure.</p></div>
+<p class="tiny">Your answers are sent privately to Ananya's email when the form is submitted.</p>
+</div></div></section>
+
+<script>
+const answers={}, correct={0:2,1:0,3:0}; let current=0,wrong=false,chosenDate="";
+function go(id){document.querySelectorAll(".screen").forEach(s=>s.classList.add("hide"));document.getElementById(id).classList.remove("hide");window.scrollTo({top:0,behavior:"smooth"});sparkles()}
+function choose(q,a,el){
+ if(answers[q]!==undefined)return;answers[q]=a;document.querySelectorAll("#q"+q+" .answer").forEach(b=>b.disabled=true);el.classList.add("selected");
+ let ok=a===correct[q];if(!ok)wrong=true;let f=document.getElementById("f"+q);f.classList.add("show");
+ if(q===0)f.innerHTML=ok?"💗 <b>Correct.</b> I love you more, but let's keep it equal in this one. 😌":"💗 <b>I was being nice to you by keeping it equal</b> even though I love you more. 😌";
+ if(q===1)f.innerHTML=ok?"🥹 <b>AWWW cutu.</b> You remember our first date.":"😭 <b>Baby?? ehhh.</b> How did you get this one wrong?!";
+ if(q===3)f.innerHTML=ok?"🎀 <b>Correct!</b> You know your girl.":"😤 <b>Excuse me?</b> We may need to talk after this game.";
+ document.getElementById("next"+q).classList.remove("hide");document.getElementById("prog").style.width=((q+1)/4*100)+"%";
+}
+function nextQ(n){document.getElementById("q"+current).classList.remove("active");current=n;document.getElementById("q"+current).classList.add("active")}
+function answerFree(){let v=document.getElementById("free2").value.trim();if(!v){alert("Tell me something. I genuinely want to know. ❤️");return}answers[2]=v;let f=document.getElementById("f2");f.classList.add("show");f.innerHTML="💗 <b>I love hearing this.</b> There isn't a wrong answer when you're telling me what you genuinely love about us.";document.getElementById("next2").classList.add("hide");document.getElementById("prog").style.width="75%";nextQ(3)}
+function finishQuiz(){
+ document.getElementById("emailQ1").value=document.querySelector("#q0 .selected")?.textContent.trim()||"";
+ document.getElementById("emailQ2").value=document.querySelector("#q1 .selected")?.textContent.trim()||"";
+ document.getElementById("emailQ3").value=document.getElementById("free2").value.trim();
+ document.getElementById("emailQ4").value=document.querySelector("#q3 .selected")?.textContent.trim()||"";
+ let r=document.getElementById("result");r.style.display="block";
+ if(!wrong){r.innerHTML="✨ <b>PERFECT.</b> You know us too well. You have earned your date. 💗";document.getElementById("toDates").classList.remove("hide")}
+ else{r.innerHTML="😌 <b>Oh no.</b> You got at least one answer wrong… which means you have officially unlocked Ananya's secret lifeline.";document.getElementById("startKiss").classList.remove("hide")}
+ document.getElementById("submitQuiz").classList.add("hide");
+}
+function startKissGame(){document.getElementById("startKiss").classList.add("hide");const z=document.getElementById("kisszone");z.style.display="block";let caught=0;z.innerHTML="<div id='kissText' style='position:absolute;z-index:2;top:12px;left:0;right:0;text-align:center;font-weight:800'>Catch 5 of Ananya's kisses to unlock your lifeline 💋 <span id='kc'>0/5</span></div>";for(let i=0;i<25;i++)setTimeout(()=>spawnKiss(z),i*180)}
+function spawnKiss(z){if(!z)return;const k=document.createElement("span");k.className="kiss";k.textContent=["💋","💗","😘","💕"][Math.floor(Math.random()*4)];k.style.left=(Math.random()*92)+"%";k.style.animationDuration=(3.3+Math.random()*2)+"s";k.onclick=()=>{k.remove();let n=++window.kissCaught||1;window.kissCaught=n;document.getElementById("kc").textContent=n+"/5";if(n>=5){z.innerHTML="<div style='height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;font-size:21px;font-weight:800'>💋 LIFELINE UNLOCKED!<br><br>You successfully stole enough kisses from Ananya.<br><button class='btn' onclick=\"go('dates')\">ESCAPE THE QUIZ →</button></div>"}};z.appendChild(k);setTimeout(()=>k.remove(),6000)}
+function pickDate(d){chosenDate=d;document.getElementById("chosenDate").textContent=d;document.getElementById("emailDate").value=d;go("final")}
+function sparkles(){for(let i=0;i<20;i++){let s=document.createElement("span");s.className="spark";s.textContent=["💗","🌸","✨","💕","💞"][i%5];s.style.left=Math.random()*96+"%";s.style.animationDelay=(-Math.random()*5)+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),6500)}}
+document.getElementById("responseForm").addEventListener("submit",function(){document.getElementById("emailQ1").value=document.querySelector("#q0 .selected")?.textContent.trim()||"";document.getElementById("emailQ2").value=document.querySelector("#q1 .selected")?.textContent.trim()||"";document.getElementById("emailQ3").value=document.getElementById("free2").value.trim();document.getElementById("emailQ4").value=document.querySelector("#q3 .selected")?.textContent.trim()||"";});
+</script>
+</body>
+</html>
